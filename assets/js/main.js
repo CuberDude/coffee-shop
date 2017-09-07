@@ -58,10 +58,12 @@
     $("#final").click(function writeUserData() {
             const dbObj = firebase.database().ref()
             
-            dbObj.on('value', snap=> console.log(snap));
-            console.log(firebase.database().ref('/order/').once('value').then(function(snapshot) {return snapshot.val();}));
-            /*firebase.database().ref('order/' ).set({
+        firebase.database().ref().once('value').then(function(snapshot) {
+                console.log(snapshot.val()!==null);
+            
+        let l=(snapshot.val()!==null)?(Object.keys(snapshot.val()).length):0; 
+        firebase.database().ref(l).set({
                 customer: customer
-            });*/
-        
+            });
+        })
     })
