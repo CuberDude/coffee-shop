@@ -1,12 +1,12 @@
 
     console.log("efw");
-    var prices={expresso:15,frappe:20,cappacino:25}
+    var prices={expresso:15,frappe:20,cappacino:25};
     var coffee={expresso:0,frappe:0,cappacino:0,Special_Request:""};
     var customer={name:"",order:coffee,bill:0};
     $("#ExpressQty").html("Qty: "+coffee.expresso+"<br> Price: Rs"+prices.expresso+"/Cup");
     $("#CappaQty").html("Qty: "+coffee.cappacino+"<br> Price: Rs"+prices.cappacino+"/Cup");
     $("#FrappeQty").html("Qty: "+coffee.frappe+"<br> Price: Rs"+prices.frappe+"/Cup");
-    $("#bill").html("Total :"+coffee.bill);
+    $("#bill").html("Rs "+customer.bill);
 
     $("#collapse-0").click(function(){
         if($("#collapse-0").text()==="Add Your Order"){
@@ -14,7 +14,7 @@
         }else{
             $("#collapse-0").text("Add Your Order");
         }
-    })
+    });
     function add(val){
         switch(val){
             case 1: coffee.expresso++;
@@ -42,7 +42,7 @@
                     customer.bill=customer.bill-prices.cappacino;
                     $("#CappaQty").text("Qty: "+coffee.cappacino);break
         }
-        $("#bill").html("Rs"+coffee.bill);
+        $("#bill").html("Rs"+customer.bill);
     }
     function clicking(){
         coffee.Special_Request=$("#special").val();
@@ -62,7 +62,7 @@
 
     });
     $("#final").click(function writeUserData() {
-        if($("name").val()===""||coffee.bill===0)
+        if($("name").val()===""||customer.bill===0)
         console.log(customer);
         const dbObj = firebase.database().ref()
             

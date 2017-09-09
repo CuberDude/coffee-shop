@@ -65,23 +65,30 @@
     </form>
     <div id="sum" class="hidden">
         <div id="express" class="row checkbox show visible-xs-block visible-sm-block visible-md-block visible-lg-block">
-                <label class="visible-xs-block visible-sm-block  visible-md-block visible-lg-block">
-                    <p class="show visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" type="checkbox"> <strong>Expresso</strong><div id="ExpressQtysum"></div></p>
-                    <img class="coffee-img" align="right" src="assets/img/express.jpg" height="70" />
-                </label>  
-        </div>
-        <div id="frape"class="row checkbox show visible-xs-block visible-sm-block visible-md-block visible-lg-block">
-            <label class="visible-xs-block visible-sm-block  visible-md-block visible-lg-block">
-                <p class="show visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" type="checkbox"> <strong>Frappe</strong><div id="FrappeQtysum"></div></p>
-            <img class="coffee-img" align="right" src="assets/img/frape.jpg" height="70" />
-        </label>  
-        </div>
-        <div id="cappa" class="row checkbox show visible-xs-block visible-sm-block visible-md-block visible-lg-block">
-            <label class="visible-xs-block visible-sm-block  visible-md-block visible-lg-block">
-            <p class="show visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" type="checkbox"> <strong>Capaccino</strong> <div id="CappaQtysum"></div> </p>
-            <img class="coffee-img" align="right" src="assets/img/cappa.jpg" height="70" />
-            </label>  
-        </div>
+                    <label class="visible-xs-block visible-sm-block  visible-md-block visible-lg-block">
+                        <img class="coffee-img col-xs-3" align="left" src="assets/img/express.jpg"/>
+                        <div class="col-xs-9">
+                  		<strong>Expresso</strong><div id="ExpressQtysum"></div>
+                        </div>
+                    </label>  
+                </div>
+                <div id="frape" class="row checkbox show visible-xs-block visible-sm-block visible-md-block visible-lg-block">
+                    <label class="visible-xs-block visible-sm-block  visible-md-block visible-lg-block">
+                        <img class="coffee-img col-xs-3" align="left" src="assets/img/frape.jpg"/>
+                        <div class="col-xs-9">
+ 						<strong>Frappe</strong><div class="text-left" id="FrappeQtysum"></div>
+						<br> 
+						</div>
+                    </label>  
+                </div>
+                <div id="cappa" class="row checkbox show visible-xs-block visible-sm-block visible-md-block visible-lg-block">
+                    <label class="visible-xs-block visible-sm-block  visible-md-block visible-lg-block">
+                        <img class="coffee-img col-xs-3" align="left" src="assets/img/cappa.jpg" />
+                         <div class="col-xs-9">
+                        <strong>Capaccino</strong><div id="CappaQtysum"></div>
+						</div>
+                    </label>  
+                </div>
         <p class="show visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline visible-xs-inline-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" type="checkbox"> <strong>Total:</strong> <div id="bill"></div> </p>        
         <h3 id="specialsum"></h3>
         <a href="#order-form"><div id="editing" onclick="clicking()" class="btn btn-primary col-sm-6 col-xs-6">Change</div></a>
