@@ -27,7 +27,7 @@
                    customer.bill=customer.bill+prices.cappacino; 
                    $("#CappaQty").html("Qty: "+coffee.cappacino+"<br> Price: Rs"+prices.cappacino+"/Cup"); break
         }
-        $("#bill").html("Total :Rs"+customer.bill);
+        $("#bill").html("Rs"+customer.bill);
 
     }
     function remove(val){
@@ -42,7 +42,7 @@
                     customer.bill=customer.bill-prices.cappacino;
                     $("#CappaQty").text("Qty: "+coffee.cappacino);break
         }
-        $("#bill").html("Total :Rs"+coffee.bill);
+        $("#bill").html("Rs"+coffee.bill);
     }
     function clicking(){
         coffee.Special_Request=$("#special").val();
