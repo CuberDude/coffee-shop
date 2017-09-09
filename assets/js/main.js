@@ -1,10 +1,13 @@
 
     console.log("efw");
+    var prices={expresso:15,frappe:20,cappacino:25}
     var coffee={expresso:0,frappe:0,cappacino:0,Special_Request:""};
-    var customer={name:"",order:coffee};
-    $("#ExpressQty").text("Qty: "+coffee.expresso);
-    $("#CappaQty").text("Qty: "+coffee.cappacino);
-    $("#FrappeQty").text("Qty: "+coffee.frappe);
+    var customer={name:"",order:coffee,bill:0};
+    $("#ExpressQty").html("Qty: "+coffee.expresso+"<br> Price: Rs"+prices.expresso+"/Cup");
+    $("#CappaQty").html("Qty: "+coffee.cappacino+"<br> Price: Rs"+prices.cappacino+"/Cup");
+    $("#FrappeQty").html("Qty: "+coffee.frappe+"<br> Price: Rs"+prices.frappe+"/Cup");
+    $("#bill").html("Total :"+coffee.bill);
+
     $("#collapse-0").click(function(){
         if($("#collapse-0").text()==="Add Your Order"){
             $("#collapse-0").text("Coffee");
@@ -15,24 +18,31 @@
     function add(val){
         switch(val){
             case 1: coffee.expresso++;
-                    $("#ExpressQty").text("Qty: "+coffee.expresso);break;
+                    customer.bill=customer.bill+prices.expresso;
+                    $("#ExpressQty").html("Qty: "+coffee.expresso+"<br> Price: Rs"+prices.expresso+"/Cup");;break;
             case 2:coffee.frappe++;
-                    $("#FrappeQty").text("Qty: "+coffee.frappe); break
+                   customer.bill=customer.bill+prices.frappe;
+                   $("#FrappeQty").html("Qty: "+coffee.frappe+"<br> Price: Rs"+prices.frappe+"/Cup");;break
             case 3:coffee.cappacino++;
-                    $("#CappaQty").text("Qty: "+coffee.cappacino);break
-
+                   customer.bill=customer.bill+prices.cappacino; 
+                   $("#CappaQty").html("Qty: "+coffee.cappacino+"<br> Price: Rs"+prices.cappacino+"/Cup"); break
         }
+        $("#bill").html("Total :Rs"+customer.bill);
+
     }
     function remove(val){
         switch(val){
             case 1: (coffee.expresso>0)?coffee.expresso--:coffee.expresso=0;
+                    customer.bill=customer.bill-prices.expresso;
                     $("#ExpressQty").text("Qty: "+coffee.expresso);break;
             case 2:(coffee.frappe>0)?coffee.frappe--:coffee.frappe=0;
+                    customer.bill=customer.bill-prices.frappe;
                     $("#FrappeQty").text("Qty: "+coffee.frappe); break
-                    case 3:(coffee.cappacino)?coffee.cappacino--:coffee.cappacino;
+            case 3:(coffee.cappacino)?coffee.cappacino--:coffee.cappacino;
+                    customer.bill=customer.bill-prices.cappacino;
                     $("#CappaQty").text("Qty: "+coffee.cappacino);break
-
         }
+        $("#bill").html("Total :Rs"+coffee.bill);
     }
     function clicking(){
         coffee.Special_Request=$("#special").val();
@@ -49,21 +59,21 @@
     $("#order").click(clicking());
     $("#editing").click(clicking());
     $("#final").click(function(){
-        coffee={expresso:0,frappe:0,cappacino:0,Special_Request:""};
-        customer={name:"",order:coffee};
-        $("name").val("")
-        $("special").val("");
-        clicking();
+
     });
     $("#final").click(function writeUserData() {
-            const dbObj = firebase.database().ref()
+        if($("name").val()===""||coffee.bill===0)
+        console.log(customer);
+        const dbObj = firebase.database().ref()
             
         firebase.database().ref().once('value').then(function(snapshot) {
-                console.log(snapshot.val()!==null);
             
         let l=(snapshot.val()!==null)?(Object.keys(snapshot.val()).length):0; 
         firebase.database().ref(l).set({
                 customer: customer
             });
         })
+        alert("Your Total bill is :"+customer.bill);
+        //reseting after updating
+         window.location = "index.html";
     })
